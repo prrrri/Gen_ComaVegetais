@@ -73,25 +73,3 @@ public class Produtos {
 		System.out.println("\nQuantidade Disponível: "+quantidadeDisponivel);
 	}
 }
-	
-	/* public void adicionarAoCarrinhO() {
-		//lógica para adicionar o produto ao carrinho
-		//pode ser atualizando a quantidade no carrinho 
-		//ou adicionando o produto a uma lista de itens no carrinho
-		System.out.println("\nProduto adicionado ao carrinho: " + nome);
-	} else {
-		System.out.println("\nProduto indisponível para compra.");
-	}
-	
-    // Método para mostrar os produtos disponíveis
-    public static void mostrarProdutosDisponiveis(Produtos[] produtos) {
-        System.out.println("Produtos Disponíveis:");
-        for (int i = 0; i < produtos.length; i++) {
-            if (produtos[i].verificarDisponibilidade()) {
-                System.out.println((i + 1) + ". " + produtos[i].getNome());
-
-}
-}
-    }
-}
-*/

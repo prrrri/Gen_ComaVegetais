@@ -51,7 +51,7 @@ public class Menu {
 				
 				//Instanciando produtos da classe Produtos
 				Produtos produto1 = new Produtos ("Couve Kale","Prepare na air-fryer com azeite, páprica e sal. Parece um salgadinho.",4.50,"Hortaliças",7);
-				Produtos produto2 = new Produtos ("Cúrcuma","O mais poderosos antiinflamatório natural",8.0,"Temperos",30);
+				Produtos produto2 = new Produtos ("Cúrcuma","O mais poderosos antiinflamatório natural.",8.0,"Temperos",30);
 				Produtos produto3 = new Produtos ("Alho-Poró","Gostoso demais no preparo de quiches e saladas.",6.0,"Hortaliças",4);
 				Produtos produto4 = new Produtos ("Levedura Nutricional","Rico em vitaminas do complexo B, dá sabor de queijo.",27.0,"Temperos",3);
 				Produtos produto5 = new Produtos ("Iogurte Vegetal","O mais natural possível, plant based, sabor salada de frutas.",12.99,"Bebidas",6);
@@ -66,55 +66,17 @@ public class Menu {
 				produto5.mostrarDetalhes();
 				produto6.mostrarDetalhes();
 				produto7.mostrarDetalhes();
-			//}
+				
 				break;
-				
-				/* Testar a disponibilidade e adicionar produtos ao carrinho
-				if(produto1.verificarDisponibilidade()) {
-					produto1.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto2.verificarDisponibilidade()) {
-					produto2.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto3.verificarDisponibilidade()) {
-					produto3.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto4.verificarDisponibilidade()) {
-					produto4.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto5.verificarDisponibilidade()) {
-					produto5.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto6.verificarDisponibilidade()) {
-					produto6.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				
-				if(produto7.verificarDisponibilidade()) {
-					produto7.adicionarAoCarrinhO();
-				}else {
-					System.out.println("\nProduto indisponível para compra.");
-				}
-				break;
-			*/
 				
 			case 2: {
+				System.out.println("Faça seus pedidos (Digite 0 para finalizar):");
+
+                // Inicializar variável para armazenar o valor total da compra
+                float total = 0;
+
+                while (true) {
+
 				System.out.println("Selecione o produto que deseja comprar");
 				System.out.println("\nPRODUTOS");
 				System.out.println("1\tCOUVE KALE" + " Preço: R$ 4,50");
@@ -124,45 +86,55 @@ public class Menu {
 				System.out.println("5\tIOGURTE VEGETAL 600ml" + " Preço: R$ 12,99");
 				System.out.println("6\tLEITE DE AVEIA 1L" + " Preço: R$ 11,25");
 				System.out.println("7\tÁGUA DE COCO 300ml" + " Preço: R$ 4,50");
+				System.out.println("0\tFINALIZAR PEDIDO");
 
 				System.out.println("\nDigite o Código do Produto: ");
 				pedido = leia.nextInt();
-				System.out.println("\nQuantas Unidades Você Deseja?: ");
+				// Se o usuário digitar 0, finalizar o loop de pedidos
+                if (pedido == 0) {
+                    break;
+                }
+                
+				System.out.println("\nQuantas Unidades Você Deseja? ");
 				quantidade = leia.nextInt();
 				
+				float valorItem = 0;
+				
 				switch (pedido) {
-
-				case 1:
-					preco += quantidade * 4.5f;
-					System.out.println("\nPedido: COUVE KALE - Valor: " + nfMoeda.format(preco));
-					break;
-				case 2:
-					preco += quantidade * 6.0f;
-					System.out.println("\nPedido: ALHO PORÓ - Valor: " + nfMoeda.format(preco));
-					break;
-				case 3:
-					preco += quantidade * 8.0f;
-					System.out.println("\nPedido: CÚRCUMA - Valor: " + nfMoeda.format(preco));
-					break;
-				case 4:
-					preco += quantidade * 27.0f;
-					System.out.println("\nPedido: LEVEDURA NUTRICIONAL - Valor: " + nfMoeda.format(preco));
-					break;
-				case 5:
-					preco += quantidade * 12.99f;
-					System.out.println("\nPedido: IOGURTE VEGETAL - Valor: " + nfMoeda.format(preco));
-					break;
-				case 6:
-					preco += quantidade * 11.25f;
-					System.out.println("\nPedido: LEITE DE AVEIA - Valor: " + nfMoeda.format(preco));
-					break;
-				case 7:
-					preco += quantidade * 4.5f;
-					System.out.println("\nPedido: ÁGUA DE COCO: Valor: " + nfMoeda.format(preco));
-				}
-			}
-					break;
-					
+				
+		            case 1:
+		                valorItem = quantidade * 4.5f;
+		                break;
+		            case 2:
+		                valorItem = quantidade * 6.0f;
+		                break;
+		            case 3:
+		                valorItem = quantidade * 8.0f;
+		                break;
+		            case 4:
+		                valorItem = quantidade * 27.0f;
+		                break;
+		            case 5:
+		                valorItem = quantidade * 12.99f;
+		                break;
+		            case 6:
+		                valorItem = quantidade * 11.25f;
+		                break;
+		            case 7:
+		                valorItem = quantidade * 4.5f;
+		                break;
+		            default:
+		                System.out.println("\nOpção Inválida!");
+		                continue;  // Continua o loop sem adicionar ao total
+		        }
+				
+		        // Adicionar o valor do item ao total da compra
+		        total += valorItem;
+		    }
+		                
+		    System.out.println("\nTotal da Compra: " + nfMoeda.format(total));
+		}
+		break;
 			
 			case 3: {
 				System.out.println("\nSOBRE NÓS: ");
