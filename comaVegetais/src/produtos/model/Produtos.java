@@ -6,15 +6,13 @@ public class Produtos {
 	private String descricao;
 	private double preco;
 	private String categoria;
-	private int quantidadeDisponivel;
 	
 	//método construtor
-	public Produtos(String nome, String descricao, double preco, String categoria, int quantidadeDisponivel) {
+	public Produtos(String nome, String descricao, double preco, String categoria) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.categoria = categoria;
-		this.quantidadeDisponivel = quantidadeDisponivel;
 	}
 
 	//get and set
@@ -49,27 +47,12 @@ public class Produtos {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
-	public int getQuantidadeDisponivel() {
-		return quantidadeDisponivel;
-	}
-
-	public void setQuantidadeDisponivel(int quantidadeDisponivel) {
-		this.quantidadeDisponivel = quantidadeDisponivel;
-	}
 	
-	//criando métodos específicos
-	
-	//boolean pq retorna true caso esteja disponível e false caso não esteja
-	public boolean verificarDisponibilidade() {
-		return quantidadeDisponivel > 0;
-	}
 	
 	public void mostrarDetalhes() {
 		System.out.println("\nNome: "+nome);
 		System.out.println("\nDescrição: "+descricao);
-		System.out.println("\nPreço: "+preco);
+		System.out.printf("\nPreço: R$ %.2f \n",getPreco());
 		System.out.println("\nCategoria: "+categoria);
-		System.out.println("\nQuantidade Disponível: "+quantidadeDisponivel);
 	}
 }

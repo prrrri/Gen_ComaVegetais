@@ -3,6 +3,7 @@ package menu;
 import java.util.Scanner;
 import java.text.NumberFormat;
 import produtos.model.Produtos;
+import menu.controller.MenuController;
 
 public class Menu {
 
@@ -10,6 +11,7 @@ public class Menu {
 	
 		Scanner leia = new Scanner(System.in);
 		NumberFormat nfMoeda = NumberFormat.getCurrencyInstance();
+		MenuController loja = new MenuController();
 		
 		// criação da variável tipo int, chamada opção, que receberá o nº da opção do Menu
 		int opcao;
@@ -26,7 +28,6 @@ public class Menu {
 			System.out.println("\n_______________________________________");
 			System.out.println("\n           1.PRODUTOS            ");
 			System.out.println("\n           2.FAZER PEDIDO       ");
-			//System.out.println("\n           3.ia criar conta         ");
 			System.out.println("\n           3.SOBRE              ");
 			System.out.println("\n           4.SAIR                ");
 			System.out.println("\n_______________________________________");
@@ -49,55 +50,32 @@ public class Menu {
 			case 1:
 				System.out.println("\nPRODUTOS: ");
 				
-				//Instanciando produtos da classe Produtos
-				Produtos produto1 = new Produtos ("Couve Kale","Prepare na air-fryer com azeite, páprica e sal. Parece um salgadinho.",4.50,"Hortaliças",7);
-				Produtos produto2 = new Produtos ("Cúrcuma","O mais poderosos antiinflamatório natural.",8.0,"Temperos",30);
-				Produtos produto3 = new Produtos ("Alho-Poró","Gostoso demais no preparo de quiches e saladas.",6.0,"Hortaliças",4);
-				Produtos produto4 = new Produtos ("Levedura Nutricional","Rico em vitaminas do complexo B, dá sabor de queijo.",27.0,"Temperos",3);
-				Produtos produto5 = new Produtos ("Iogurte Vegetal","O mais natural possível, plant based, sabor salada de frutas.",12.99,"Bebidas",6);
-				Produtos produto6 = new Produtos ("Leite de Aveia","Incrível para receitas e para tomar com café.",11.25,"Bebidas",15);
-				Produtos produto7 = new Produtos ("Água de Coco","Não precisa ir até a praia, leve para onde quiser.",4.50,"Bebidas",15);
+				loja.descricaoProdutos();
 				
-				//Chamar o método visualizar para mostrar os detalhes dos produtos
-				produto1.mostrarDetalhes();
-				produto2.mostrarDetalhes();
-				produto3.mostrarDetalhes();
-				produto4.mostrarDetalhes();
-				produto5.mostrarDetalhes();
-				produto6.mostrarDetalhes();
-				produto7.mostrarDetalhes();
+				loja.mostrarProdutos();
 				
 				break;
 				
 			case 2: {
-				System.out.println("Faça seus pedidos (Digite 0 para finalizar):");
+				System.out.println("Faça seus pedidos:");
 
                 // Inicializar variável para armazenar o valor total da compra
                 float total = 0;
 
-                while (true) {
-
-				System.out.println("Selecione o produto que deseja comprar");
-				System.out.println("\nPRODUTOS");
-				System.out.println("1\tCOUVE KALE" + " Preço: R$ 4,50");
-				System.out.println("2\tALHO PORÓ" + " Preço: R$ 6,00");
-				System.out.println("3\tCÚRCUMA (100g)" + " Preço: R$ 8,00");
-				System.out.println("4\tLEVEDURA NUTRICIONAL (100g)" + " Preço: R$ 27,00");
-				System.out.println("5\tIOGURTE VEGETAL 600ml" + " Preço: R$ 12,99");
-				System.out.println("6\tLEITE DE AVEIA 1L" + " Preço: R$ 11,25");
-				System.out.println("7\tÁGUA DE COCO 300ml" + " Preço: R$ 4,50");
-				System.out.println("0\tFINALIZAR PEDIDO");
-
-				System.out.println("\nDigite o Código do Produto: ");
+                loja.listarProdutos();
+				
+				char resposta='S';
+				
+				while (resposta != 'N') {
+					
+	
+					System.out.println("\nDigite o Código do Produto: ");
 				pedido = leia.nextInt();
-				// Se o usuário digitar 0, finalizar o loop de pedidos
-                if (pedido == 0) {
-                    break;
-                }
                 
 				System.out.println("\nQuantas Unidades Você Deseja? ");
 				quantidade = leia.nextInt();
-				
+				System.out.println("\nDeseja continuar comprando? S/N" );
+				resposta = leia.next().toUpperCase().charAt(0);
 				float valorItem = 0;
 				
 				switch (pedido) {
@@ -127,22 +105,21 @@ public class Menu {
 		                System.out.println("\nOpção Inválida!");
 		                continue;  // Continua o loop sem adicionar ao total
 		        }
+
 				
 		        // Adicionar o valor do item ao total da compra
 		        total += valorItem;
 		    }
 		                
 		    System.out.println("\nTotal da Compra: " + nfMoeda.format(total));
-		}
+            
+            }
+                
 		break;
 			
+			
 			case 3: {
-				System.out.println("\nSOBRE NÓS: ");
-				System.out.println("\nA Coma Vegetais existe com o propósito de ");
-				System.out.println("ser uma facilitadora para quem quer receber produtos ");
-				System.out.println("sem origem animal e frescos em casa. Trabalhamos ");
-				System.out.println("com os melhores fornecedores afim de garantir ");
-				System.out.println("qualidade e os melhores preços para você. ");
+				loja.sobreNos();
 			}
 				break;
 			
